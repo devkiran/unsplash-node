@@ -1,14 +1,27 @@
-### Unsplash Source
+### Unsplash API
 
-Source is built for use in small, low-traffic applications.
+```javascript
+const api = new Unsplash({
+    access_key : ACCESS_KEY || process.env.ACCESS_KEY
+});
 
-This is a simple wrapper around the Unsplash Source API.
+// Search photos by keyword
+api.searchPhotos({ query : 'earth' }).then((photos) => {
+    for (photo of photos.results) {
+        console.log(photo.id);
+    }
+});
 
-### References
+// Get a random photo
+api.randomPhoto().then((photo) => {
+    console.log(photo);
+});
 
-https://source.unsplash.com/
-
-https://unsplash.com/documentation#example-image-use
+// Get a photo by id
+api.getPhoto({ photo_id : 'x8ZStukS2PM' }).then((photo) => {
+    console.log(photo);
+});
+```
 
 ```javascript
 let photo1 = new Photo();
