@@ -56,6 +56,19 @@ class Photo {
         return this;
     }
 
+    collection(collectionId) {
+        this.collectionId = collectionId;
+
+        return this;
+    }
+
+    fromUserLikes(username) {
+        this.fromUser(username);
+        this.fromLikes = true;
+
+        return this;
+    }
+
     fetch() {
         let url = this.source;
 
@@ -67,8 +80,16 @@ class Photo {
             url += `/user/${this.username}`;
         }
 
+        if(this.fromLikes != undefined) {
+            url += '/likes';
+        }
+
         if(this.isFeatured != undefined) {
             url += '/featured';
+        }
+
+        if(this.collectionId != undefined) {
+            url += `/collection/${this.collectionId}`;
         }
 
         if(this.dimension.width && this.dimension.height) {
