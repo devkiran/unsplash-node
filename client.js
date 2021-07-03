@@ -26,4 +26,10 @@ const ACCESS_KEY = '';
 
 let photo = new Photo('x8ZStukS2PM').width(200).height(200).fetch();
 
-console.log(photo);
+let weekly = new Photo().weekly().fromUser('erondu').fetch();
+
+let daily = new Photo().daily().byKeyword('sun').fetch();
+
+let sun = new Photo().size(500, 500).byKeyword('earth').fetch();
+
+console.log(sun);

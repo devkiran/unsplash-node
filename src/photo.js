@@ -4,6 +4,7 @@ class Photo {
         this.id = id;
         this.dimension = {};
         this.source = 'https://source.unsplash.com';
+        this.interval = undefined;
     }
 
     width(width) {
@@ -18,11 +19,58 @@ class Photo {
         return this;
     }
 
+    size(width, height) {
+        this.dimension.width = width;
+        this.dimension.height = height;
+
+        return this;
+    }
+
+    weekly() {
+        this.interval = 'weekly';
+
+        return this;
+    }
+
+    daily() {
+        this.interval = 'daily';
+
+        return this;
+    }
+
+    fromUser(username) {
+        this.username = username;
+
+        return this;
+    }
+
+    byKeyword(keyword) {
+        this.keyword = keyword;
+
+        return this;
+    }
+
     fetch() {
-        let url = `${this.source}/${this.id}`;
+        let url = this.source;
+
+        if(this.id != undefined) {
+            url += `/${this.id}`;
+        }
 
         if(this.dimension.width && this.dimension.height) {
             url += `/${this.dimension.width}x${this.dimension.height}`;
+        }
+
+        if(this.username != undefined) {
+            url += `/user/${this.username}`;
+        }
+
+        if(this.interval != undefined) {
+            url += `/${this.interval}`;
+        }
+
+        if(this.keyword != undefined) {
+            url += `?${this.keyword}`;
         }
 
         return url;
