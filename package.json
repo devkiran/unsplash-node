@@ -1,0 +1,11 @@
+{
+  "name": "unsplash-node-sdk",
+  "version": "1.0.0",
+  "description": "Unsplash Node SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
