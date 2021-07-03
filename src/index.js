@@ -7,7 +7,7 @@ class Unsplash {
         this.basePath = 'https://api.unsplash.com';
     }
 
-    request(url, options) {
+    request(path, options) {
         let url = new URL(this.basePath + path);
         let result = '';
 
@@ -21,8 +21,6 @@ class Unsplash {
             url.searchParams.set('query', options.query);
             url.searchParams.set('per_page', 10);
         }
-
-        // console.log(url);
 
         return new Promise((resolve, reject) => {
             https.get(url, config, (response) => {
