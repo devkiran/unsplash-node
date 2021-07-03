@@ -20,8 +20,8 @@ class Photo {
     }
 
     size(width, height) {
-        this.dimension.width = width;
-        this.dimension.height = height;
+        this.width(width);
+        this.height(height);
 
         return this;
     }

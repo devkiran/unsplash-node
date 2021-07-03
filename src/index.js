@@ -64,14 +64,6 @@ class Unsplash {
 
         return await this.request(path);
     }
-
-    width() {
-        this.width = 100;
-    }
-
-    height() {
-        this.height =  100;
-    }
 }
 
 module.exports = Unsplash;
