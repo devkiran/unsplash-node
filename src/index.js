@@ -5,9 +5,15 @@ class Unsplash {
     constructor(config) {
         this.client_id = config.access_key;
         this.basePath = 'https://api.unsplash.com';
+
+        if(this.client_id === undefined) {
+            throw new Error('You must provide a valid access key.');
+        }
     }
 
     request(path, options) {
+        options = options || {}
+
         let url = new URL(this.basePath + path);
         let result = '';
 
@@ -51,6 +57,12 @@ class Unsplash {
         let path = '/photos/' + options.photo_id;
 
         return await this.request(path, options);
+    }
+
+    async randomPhoto() {
+        let path = '/photos/random';
+
+        return await this.request(path);
     }
 }
 
