@@ -44,8 +44,14 @@ class Photo {
         return this;
     }
 
-    byKeyword(keyword) {
+    search(keyword) {
         this.keyword = keyword;
+
+        return this;
+    }
+
+    featured() {
+        this.isFeatured = true;
 
         return this;
     }
@@ -57,12 +63,16 @@ class Photo {
             url += `/${this.id}`;
         }
 
-        if(this.dimension.width && this.dimension.height) {
-            url += `/${this.dimension.width}x${this.dimension.height}`;
-        }
-
         if(this.username != undefined) {
             url += `/user/${this.username}`;
+        }
+
+        if(this.isFeatured != undefined) {
+            url += '/featured';
+        }
+
+        if(this.dimension.width && this.dimension.height) {
+            url += `/${this.dimension.width}x${this.dimension.height}`;
         }
 
         if(this.interval != undefined) {
